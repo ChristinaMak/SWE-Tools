@@ -13,6 +13,7 @@ name_email_dict = defaultdict()
 # Add points to user's point count
 def add_points(line, point_value, email_col_idx):
     data = [x.strip() for x in line.split(',')]
+    name_email_dict[data[email_col_idx]] = data[1] + " " + data[2]
     if users_dict.get(data[email_col_idx]) == None:
         users_dict[data[email_col_idx]] = point_value 
     else:
@@ -81,6 +82,7 @@ def count_points(isRaffle):
     points_file.close()
     print users_dict
     
+    
 def getList():
     users_list = []
     for user in users_dict:
@@ -96,7 +98,9 @@ def drawWinners():
     winners = numpy.random.choice(len(users_list), 3)
     print "start raffle"
     for w in winners:
+        print name_email_dict[users_list[w]]
         print users_list[w]
     
 
-count_points(False)
+#count_points(False)
+drawWinners()
