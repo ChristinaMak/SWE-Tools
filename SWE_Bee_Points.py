@@ -2,7 +2,7 @@ import os
 import random
 import numpy
 import random
-import defaultdict
+from collections import defaultdict
 from random import choice
 
 points_files = os.listdir("Points")
@@ -91,11 +91,12 @@ def getList():
     return users_list
     
 def drawWinners():
+    count_points(True)
     users_list = getList()
     winners = numpy.random.choice(len(users_list), 3)
+    print "start raffle"
     for w in winners:
         print users_list[w]
     
-count_points(True)
-print "start raffle"
-drawWinners()
+
+count_points(False)
